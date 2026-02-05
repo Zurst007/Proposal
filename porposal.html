@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For You ❤️</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", "Comic Sans MS", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      color: #2d2d2d;
+      overflow: hidden;
+    }
+
+    .slider {
+      display: flex;
+      width: 300vw;
+      height: 100vh;
+      transition: transform 0.6s ease-in-out;
+    }
+
+    .slide {
+      width: 100vw;
+      height: 100vh;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .big-title {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      margin-bottom: 20px;
+    }
+
+    /* Cute emoji sparkle on headings */
+    .big-title::after {
+      content: " ✨💗";
+    }
+
+    .text {
+      font-size: 1.15rem;
+      max-width: 900px;
+      line-height: 1.8;
+      background: rgba(255,255,255,0.75);
+      padding: 24px;
+      border-radius: 22px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+      position: relative;
+    }
+
+    /* Cute heart accent */
+    .text::before {
+      content: "💞";
+      position: absolute;
+      top: -14px;
+      left: 18px;
+      font-size: 1.4rem;
+    }
+
+    .choices {
+      margin-top: 25px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 14px 30px;
+      font-size: 1.05rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      background: #ff4f70;
+      color: white;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+
+    button.secondary {
+      background: #bdbdbd;
+      color: #333;
+    }
+
+    .lock-box {
+      margin-top: 20px;
+      background: rgba(255,255,255,0.75);
+      padding: 18px;
+      border-radius: 18px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      max-width: 420px;
+      width: 100%;
+    }
+
+    .lock-box input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    .hint {
+      font-size: 0.9rem;
+      opacity: 0.75;
+      margin-top: 8px;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 20px;
+      animation: floatUp linear forwards;
+      opacity: 0.9;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 0.9; }
+      100% { transform: translateY(-110vh) scale(1.4); opacity: 0; }
+    }
+
+    .sticker {
+      position: absolute;
+      font-size: 42px;
+      animation: stickerFloat 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes stickerFloat {
+      0%,100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(5deg); }
+    }
+
+    .floating-text {
+      position: fixed;
+      top: -40px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      opacity: 0.75;
+      animation: conveyor linear forwards;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    @keyframes conveyor {
+      0% { transform: translateY(-20vh); opacity: 0; }
+      10% { opacity: 0.8; }
+      90% { opacity: 0.8; }
+      100% { transform: translateY(120vh); opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="slider" id="slider">
+
+  <!-- Slide 1 -->
+  <div class="slide">
+    <div class="sticker" style="top:10%; left:8%;">🧸</div>
+    <div class="sticker" style="top:18%; right:10%;">💗</div>
+    <div class="sticker" style="bottom:12%; left:15%;">✨</div>
+
+    <div class="big-title">SAKKKUUUU BABYYYYY</div>
+    <div class="text">
+      I know we were supposed to be celebrating our 9 month anniversary today but im somehow more happier were able to experience and do what were doing. I know weve seperated a few times and after each of those times jaan, fate always reminded us of the deepness and purity of the love we both hold in our hearts for each other, so with all my heart in this, im asking you, Ata-e-Sakina, will you be my girlfriend (PLEASEEE).
+    </div>
+
+    <div class="choices">
+      <button id="yesBtn">Yes 💖</button>
+      <button id="noBtn" class="secondary">No</button>
+    </div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="slide">
+    <div class="sticker" style="top:12%; left:6%;">🎀</div>
+    <div class="sticker" style="top:20%; right:8%;">🥰</div>
+    <div class="sticker" style="bottom:14%; right:15%;">💞</div>
+
+    <div class="big-title">BABY SAID YESS YAYAYAYAYAYA</div>
+    <div class="text">
+      Im so happy you said yes sakina (like i didnt know you were already going to) but i genuinely am so grateful to have you back in my life my jaan. I genuinely love you so much sakina i cant explain in words how much love i hold for you. On a serious note my jaanu, i know we said this time well do things perfectly and i actually meant it so i want you to hear you out a few things aswell. im not actually 5'10 or whatever ass height i told i was on discord and i think you already believed when ananyaa told you i wasnt that height but for some reason i decided to keep lying i dont know why, im actually 5'8, an average height and i dont know why i needed to lie about it but i feel like i wont be able to be fully into the newer relationship with no hiding if i cant tell you this. I also lied about my house AGAIN I HAVE NO IDEA WHY I LIED MAYBE I JUST WANTED TO SHOW OFF IDK but i just live with my dad, my mom, my big and smol sister in a normal sized house id say. i dont remember any other lies i told you during the time on discord but if i did you can ask me baby and i promise to be truthful about everything from now on. With this, i want you to take the same initiative and tell me about any lies youve told me till now. I love you sakina and i think if we be fully truthful to each other, we can actually have the relationship were dreaming of. I love you so much baby.
+    </div>
+
+    <div class="choices">
+      <button id="unlockBtn">Unlock the last page 🔒</button>
+    </div>
+  </div>
+
+  <!-- Slide 3 -->
+  <div class="slide">
+    <div class="sticker" style="top:14%; left:10%;">💌</div>
+    <div class="sticker" style="top:22%; right:12%;">🌸</div>
+    <div class="sticker" style="bottom:16%; left:18%;">🫶</div>
+
+    <div class="big-title">A new fresh start</div>
+
+    <div class="lock-box" id="lockBox">
+      <div id="spankuCounter" style="margin-bottom:10px;font-weight:600;">
+        Spanku owed: 0 😈
+      </div>
+      <input type="password" id="passwordInput" placeholder="Enter the password" />
+      <button id="checkPassword">Unlock 💗</button>
+      <div class="hint">Hint: nippu colour ( remember carefully)</div>
+    </div>
+
+    <div class="text" id="secretText" style="display:none;">
+      Finally baby, i know after we started talking again, we both have been waiting for this date so much and im so happy it finally came. I love you so much sakina, more than words can ever express. The deepness of my love goes far beyond what this universe holds sakina. I swear i have never felt so much love and care for anyone but you, not even my family members come close to that jaan. Im happy were able to give each other another chance and im so happy well be dating again because no one makes me as happy as you do jaan. I know weve both made a lot of mistakes in the past but i hope we both can forget them and forgive each other completely and start the best chapters of our life jaan cause i only ever see this turning into marraige. I love you so much sakina ❤️
+      <div style="margin-top:20px;font-size:0.95rem;opacity:0.8;">
+        im sorry if it didnt feel special i tried my best 😭 but it was full of love jaan and it was my first time trying something like this. i love you so much
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let index = 0;
+  const slider = document.getElementById('slider');
+
+  function goTo(i) {
+    index = i;
+    slider.style.transform = `translateX(-${index * 100}vw)`;
+  }
+
+  yesBtn.onclick = () => goTo(1);
+  unlockBtn.onclick = () => goTo(2);
+
+  noBtn.onclick = function () {
+    this.style.position = 'absolute';
+    this.style.left = Math.random() * 60 + 'vw';
+    this.style.top = Math.random() * 60 + 'vh';
+  };
+
+  const PASSWORD = "brownish pink";
+  let spankuCount = 0;
+
+  checkPassword.onclick = () => {
+    if (passwordInput.value.toLowerCase() === PASSWORD.toLowerCase()) {
+      lockBox.style.display = "none";
+      secretText.style.display = "block";
+    } else {
+      spankuCount++;
+      spankuCounter.innerText = `Spanku owed: ${spankuCount} 😈`;
+      passwordInput.value = "";
+    }
+  };
+
+  const words = [
+    "sakku baby",
+    "cutu baby",
+    "wifeyyy",
+    "my jaaneman",
+    "i love you cutu",
+    "sakkupie"
+  ];
+
+  function spawnText() {
+    const el = document.createElement("div");
+    el.className = "floating-text";
+    el.innerText = words[Math.floor(Math.random() * words.length)];
+    el.style.left = Math.random() * 80 + "vw";
+    el.style.animationDuration = (10 + Math.random() * 6) + "s";
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 16000);
+  }
+
+  setInterval(spawnText, 900);
+
+  function createHeart() {
+    const h = document.createElement('div');
+    h.className = 'heart';
+    h.innerText = '❤️';
+    h.style.left = Math.random() * 100 + 'vw';
+    h.style.animationDuration = (5 + Math.random() * 4) + 's';
+    h.style.fontSize = (16 + Math.random() * 20) + 'px';
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 9000);
+  }
+
+  setInterval(createHeart, 350);
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
